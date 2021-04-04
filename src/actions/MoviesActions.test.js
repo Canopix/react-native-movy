@@ -47,5 +47,4 @@ describe('MoviesActions', () => {
       },
     ]);
   }); // it 'should dispatch GET_API_CONFIG states'
-
 }); // describe
