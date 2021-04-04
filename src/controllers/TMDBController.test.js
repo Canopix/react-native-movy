@@ -9,6 +9,7 @@ const checkMovieRecord = movie => {
 describe('TMDBController', () => {
   it('should be defined as expected', () => {
     expect(typeof TMDBController).toBe('function');
+    expect(typeof TMDBController?.configuration).toBe('function');
     expect(typeof TMDBController?.getNowPlaying).toBe('function');
     expect(typeof TMDBController?.getPopular).toBe('function');
     expect(typeof TMDBController?.getMovieDetails).toBe('function');
@@ -20,6 +21,15 @@ describe('TMDBController', () => {
       "No TMDB_API_KEY available. TMDB's API endpoints won't be tested."
     );
   } else {
+    it('method configuration should get the required params', async () => {
+      const configuration = await TMDBController.configuration();
+      expect(typeof configuration).toBe('object');
+      const { images } = configuration;
+      expect(typeof images).toBe('object');
+      expect(typeof images?.base_url).toBe('string');
+      expect(Array.isArray(images?.poster_sizes)).toBe(true);
+    });
+
     it('method getNowPlaying should get a list of movies', async () => {
       const nowPlaying = await TMDBController.getNowPlaying();
       expect(typeof nowPlaying).toBe('object');
