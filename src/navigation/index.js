@@ -12,8 +12,8 @@ export function RootNavigator() {
   const scheme = useColorScheme();
 
   return (
-    <NavigationContainer theme={theme[scheme]}>
-      {user ? <AppNavigator /> : <AuthNavigator />}
+    <NavigationContainer theme={theme['dark']}>
+      <AppNavigator />
     </NavigationContainer>
   );
 }
