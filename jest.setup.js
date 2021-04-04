@@ -14,9 +14,7 @@ jest.mock('react-native-bootsplash', () => ({
 
 jest.mock('react-native-config', () => ({
   Config: {
-    // Run `TMDB_API_KEY=<<token>> npx jest --watchAll to test against the TMDB API.
-    TMDB_API_KEY: process.env.TMDB_API_KEY,
-    API_BASE_URL: process.env.API_BASE_URL || 'https://api.themoviedb.org/3/',
+    API_BASE_URL: 'XXX',
     BUILD_VARIANT: 'TEST',
   },
 }));
