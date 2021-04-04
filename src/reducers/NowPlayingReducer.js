@@ -8,9 +8,13 @@ export const nowPlayingReducer = (state = INITIAL_STATE, { payload, type }) => {
     case TYPES.GET_NOW_PLAYING:
       if (Array.isArray(payload)) {
         return movieData(payload?.[0]);
-      } else {
-        return movieData(payload);
       }
+      return movieData(payload);
+    case TYPES.GET_MOVIE_DETAILS:
+      if (payload?.id && state?.id === payload.id) {
+        return { ...state, ...movieData(payload) };
+      }
+      return state;
     default:
       return state;
   }

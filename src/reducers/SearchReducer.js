@@ -12,8 +12,17 @@ export const searchReducer = (state = INITIAL_STATE, { payload, type }) => {
       return {
         ...state,
         query: payload?.query,
-        search: payload?.results?.map(movieData),
+        results: payload?.results?.map(movieData),
       };
+    case TYPES.GET_MOVIE_DETAILS:
+      return payload?.id && state?.results
+        ? state.results.map(m => {
+            if (m.id === payload.id) {
+              return { ...m, ...movieData(payload) };
+            }
+            return m;
+          })
+        : state;
     default:
       return state;
   }
