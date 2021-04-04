@@ -9,6 +9,12 @@ const client = axios.create({
   },
 });
 
+if (Config.DEBUG_REQUESTS) {
+  client.interceptors.request.use(request => {
+    console.log({ request });
+  });
+}
+
 client.interceptors.response.use(
   response => response.data,
   error => {

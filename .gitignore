@@ -1,3 +1,8 @@
+# Envs
+.env.development
+.env.production
+.env.staging
+
 # OSX
 #
 .DS_Store
