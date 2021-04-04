@@ -14,4 +14,7 @@ export const styles = StyleSheet.create({
     height: 175,
     width: 125,
   },
+  scrollView: {
+    padding: 10,
+  }
 });

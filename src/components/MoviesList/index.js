@@ -13,7 +13,7 @@ function MoviesList({ title, movies, navigation }) {
         horizontal={true}
         keyboardShouldPersistTaps="always"
         showsHorizontalScrollIndicator="false"
-        contentContainerStyle={{ padding: 20 }}
+        contentContainerStyle={styles.scrollView}
       >
         {movies.map(movie => (
           <TouchableOpacity

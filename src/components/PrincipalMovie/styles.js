@@ -5,7 +5,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     color: 'white',
-    height: '50%',
+    height: 650,
+  },
+  subcontainer: {
+    display: 'flex',
+    width: '100%',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 10,
   },
   linearGradient: {
     width: '100%',
@@ -39,5 +46,31 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     width: '60%',
     justifyContent: 'center',
+    color: '#0578FF',
+    opacity: 1,
+    fontWeight: '700',
+  },
+  textLabel: { color: '#0578FF', opacity: 1, fontWeight: '700' },
+  itemsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '80%',
+    marginTop: 32,
+  },
+  itemsSubContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  itemText: {
+    color: 'white',
+    fontWeight: '500',
+    marginTop: 10,
+  },
+  iconLabel: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

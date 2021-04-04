@@ -43,15 +43,7 @@ const PrincipalMovie = () => {
           colors={['transparent', 'black']}
           style={styles.linearGradient}
         >
-          <View
-            style={{
-              display: 'flex',
-              width: '100%',
-              alignItems: 'center',
-              position: 'absolute',
-              bottom: 10,
-            }}
-          >
+          <View style={styles.subcontainer}>
             <View style={styles.items}>
               <Text style={[TextStyles.label, { color: colors.text }]}>
                 Kids
@@ -66,86 +58,28 @@ const PrincipalMovie = () => {
               </Text>
             </View>
             <View style={styles.movyLabel}>
-              <Text
-                style={[
-                  TextStyles.label,
-                  { color: '#0578FF', opacity: 1, fontWeight: '700' },
-                ]}
-              >
-                MOVY ORIGINAL
-              </Text>
+              <Text style={styles.textLabel}>MOVY ORIGINAL</Text>
             </View>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                width: '80%',
-                marginTop: 32,
-              }}
-            >
-              <View
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
+            <View style={styles.itemsContainer}>
+              <View style={styles.itemsSubContainer}>
                 <FontAwesomeIcon icon={faPlus} style={styles.icon} size={32} />
-                <Text
-                  style={{
-                    color: colors.text,
-                    fontWeight: '500',
-                    marginTop: 10,
-                  }}
-                >
-                  My List
-                </Text>
+                <Text style={styles.itemText}>My List</Text>
               </View>
-              <View
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
+              <View style={styles.iconLabel}>
                 <FontAwesomeIcon
                   icon={faPlayCircle}
                   style={styles.icon}
                   size={32}
                 />
-                <Text
-                  style={{
-                    color: colors.text,
-                    fontWeight: '500',
-                    alignItems: 'center',
-                    marginTop: 10,
-                  }}
-                >
-                  Play
-                </Text>
+                <Text style={styles.itemText}>Play</Text>
               </View>
-              <View
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
+              <View style={styles.iconLabel}>
                 <FontAwesomeIcon
                   icon={faInfoCircle}
                   style={styles.icon}
                   size={32}
                 />
-                <Text
-                  style={{
-                    color: colors.text,
-                    fontWeight: '500',
-                    marginTop: 10,
-                  }}
-                >
-                  Info
-                </Text>
+                <Text style={styles.itemText}>Info</Text>
               </View>
             </View>
           </View>

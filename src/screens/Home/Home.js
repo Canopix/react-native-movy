@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import MoviesList from '@/components/MoviesList';
 import PrincipalMovie from '@/components/PrincipalMovie';
 
@@ -262,10 +262,13 @@ const list = [
 ];
 export function Home() {
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <View style={{ height: '100%', display: 'flex' }}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="always"
+    >
       <PrincipalMovie />
-      <MoviesList title="My List " movies={list} />
-    </View>
+      <MoviesList title="My List" movies={list} />
+      <MoviesList title="Trending Now" movies={list} />
+    </ScrollView>
   );
 }
