@@ -1,7 +1,7 @@
 import { TYPES } from '@/actions/MoviesActions';
 import { movieData } from '@/reducers/utils';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = [];
 
 const removeById = (movies, idToRemove) => {
   return idToRemove ? movies.filter(({ id }) => id !== idToRemove) : movies;
