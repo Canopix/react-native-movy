@@ -6,6 +6,7 @@ import { tmdbConfigurationReducer } from '@/reducers/TMDBConfigurationReducer';
 import { userListReducer } from '@/reducers/UserListReducer';
 import { nowPlayingReducer } from '@/reducers/NowPlayingReducer';
 import { popularReducer } from '@/reducers/PopularReducer';
+import { searchReducer } from '@/reducers/SearchReducer';
 
 export const rootReducer = combineReducers({
   error: errorReducer,
@@ -15,4 +16,5 @@ export const rootReducer = combineReducers({
   userList: userListReducer,
   nowPlaying: nowPlayingReducer,
   popular: popularReducer,
+  search: searchReducer,
 });

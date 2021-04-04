@@ -59,16 +59,19 @@ export const getPopular = requestAction(TYPES.GET_POPULAR, async () => {
 export const getMovieDetails = requestAction(
   TYPES.GET_MOVIE_DETAILS,
   async movieId => {
-    const nowPlaying = await TMDBController.getMovieDetails({
+    const movieDetails = await TMDBController.getMovieDetails({
       movie_id: movieId,
     });
-    return nowPlaying;
+    return movieDetails;
   }
 );
 
 export const searchMovies = requestAction(TYPES.SEARCH_MOVIES, async query => {
-  const nowPlaying = await TMDBController.searchMovies({ query });
-  return nowPlaying.results;
+  const search = await TMDBController.searchMovies({ query });
+  return {
+    query,
+    ...search,
+  };
 });
 
 export const addToUserList = movieId => ({
