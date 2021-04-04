@@ -1,6 +1,6 @@
 import { TYPES } from '@/actions/MoviesActions';
 
-const INITIAL_STATE = {};
+export const INITIAL_STATE = {};
 
 export const tmdbConfigurationReducer = (
   state = INITIAL_STATE,
