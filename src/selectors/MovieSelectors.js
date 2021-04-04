@@ -1,15 +1,54 @@
+// Utilities ///////////////////////////////////////////////////////////////////
+
+const parseDate = dateString => {
+  const match = (dateString || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    return null;
+  }
+  const [, year, month, day] = match;
+  return new Date(+year, +month - 1, +day);
+};
+
+const movieRecord = (state, movie) => {
+  if (!movie) {
+    return null;
+  }
+  const posterBaseURL = state.tmdbConfiguration?.images?.base_url;
+  const posterSize = 'w500'; //TODO Check this value.
+  const posterPath = movie.poster_path;
+  return {
+    ...movie,
+    poster_url:
+      posterBaseURL && posterPath
+        ? `${posterBaseURL}${posterSize}${posterPath}`
+        : null,
+    release_date: parseDate(movie.release_date),
+  };
+};
+
+// Selectors ///////////////////////////////////////////////////////////////////
+
 export const getNowPlaying = state => {
-  return state.nowPlaying || null;
+  return movieRecord(state, state.nowPlaying);
 };
 
 export const getPopular = state => {
-  return state.popular || null;
+  return movieRecord(state, state.popular);
 };
 
-export const getSearch = state => {
-  return state.search || null;
+export const getSearchQuery = state => {
+  const { search } = state;
+  return search?.query;
+};
+
+export const getSearchResults = state => {
+  const { search } = state;
+  return search?.results
+    ? search.results.map(m => movieRecord(state, m))
+    : null;
 };
 
 export const getUserList = state => {
-  return state.userList || null;
+  const { userList } = state;
+  return userList ? userList.map(m => movieRecord(state, m)) : null;
 };
