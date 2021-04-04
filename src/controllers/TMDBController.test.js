@@ -17,6 +17,7 @@ describe('TMDBController', () => {
   });
 
   if (!Config.TMDB_API_KEY) {
+    // eslint-disable-next-line no-console
     console.log(
       "No TMDB_API_KEY available. TMDB's API endpoints won't be tested."
     );
