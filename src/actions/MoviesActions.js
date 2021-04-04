@@ -10,6 +10,7 @@ const requestActionTypes = key =>
 
 export const TYPES = {
   CLEAR_STORE: 'CLEAR_STORE',
+  ...requestActionTypes('GET_API_CONFIG'),
   ...requestActionTypes('GET_NOW_PLAYING'),
   ...requestActionTypes('GET_POPULAR'),
   ...requestActionTypes('GET_MOVIE_DETAILS'),
@@ -35,6 +36,14 @@ const requestAction = (key, actionFun) => (...args) => async dispatch => {
   }
 };
 
+export const getAPIConfiguration = requestAction(
+  TYPES.GET_API_CONFIG,
+  async () => {
+    const configuration = await TMDBController.configuration();
+    return configuration;
+  }
+);
+
 export const getNowPlaying = requestAction(TYPES.GET_NOW_PLAYING, async () => {
   const nowPlaying = await TMDBController.getNowPlaying();
   return nowPlaying.results;
@@ -51,7 +60,7 @@ export const getMovieDetails = requestAction(
     const nowPlaying = await TMDBController.getMovieDetails({
       movie_id: movieId,
     });
-    return nowPlaying.results;
+    return nowPlaying;
   }
 );
 
