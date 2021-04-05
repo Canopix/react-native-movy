@@ -15,7 +15,7 @@ export const userListReducer = (state = INITIAL_STATE, { payload, type }) => {
       return newState;
     case TYPES.USER_LIST_REMOVE:
       return removeById(payload?.id);
-    case TYPES.GET_MOVIE_DETAILS:
+    case TYPES.GET_MOVIE_DETAILS_SUCCESS:
       return payload?.id
         ? state.map(m => {
             if (m.id === payload.id) {

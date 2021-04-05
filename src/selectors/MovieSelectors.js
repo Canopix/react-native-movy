@@ -14,7 +14,8 @@ const movieRecord = (state, movie) => {
     return null;
   }
   const posterBaseURL =
-    state.tmdbConfiguration?.images?.base_url || 'https://image.tmdb.org/t/p/';
+    state.tmdbConfiguration?.images?.secure_base_url ||
+    'https://image.tmdb.org/t/p/';
   const posterSize = 'w500'; //TODO Check this value.
   const posterPath = movie.poster_path;
   return {
@@ -29,27 +30,28 @@ const movieRecord = (state, movie) => {
 
 // Selectors ///////////////////////////////////////////////////////////////////
 
-export const getNowPlaying = state => {
+export const nowPlayingSelector = state => {
   return movieRecord(state, state.nowPlaying);
 };
 
-export const getPopular = state => {
-  return movieRecord(state, state.popular);
+export const popularSelector = state => {
+  const { popular } = state;
+  return popular ? popular.map(m => movieRecord(state, m)) : null;
 };
 
-export const getSearchQuery = state => {
+export const searchQuerySelector = state => {
   const { search } = state;
-  return search?.query;
+  return search ? search.query : null;
 };
 
-export const getSearchResults = state => {
+export const searchResultsSelector = state => {
   const { search } = state;
   return search?.results
     ? search.results.map(m => movieRecord(state, m))
     : null;
 };
 
-export const getUserList = state => {
+export const userListSelector = state => {
   const { userList } = state;
   return userList ? userList.map(m => movieRecord(state, m)) : null;
 };
