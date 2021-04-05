@@ -6,15 +6,14 @@ const INITIAL_STATE = null;
 export const nowPlayingReducer = (state = INITIAL_STATE, { payload, type }) => {
   switch (type) {
     case TYPES.GET_NOW_PLAYING_SUCCESS:
-      if (Array.isArray(payload)) {
-        return movieData(payload[0]);
-      }
-      return movieData(payload);
+      return payload.map(movieData);
     case TYPES.GET_MOVIE_DETAILS_SUCCESS:
-      if (payload?.id && state?.id === payload.id) {
-        return { ...state, ...movieData(payload) };
-      }
-      return state;
+      return state.map(m => {
+        if (m.id === payload.id) {
+          return { ...m, ...movieData(payload) };
+        }
+        return m;
+      });
     default:
       return state;
   }

@@ -1,5 +1,7 @@
 import { TMDBController } from '@/controllers/TMDBController';
 
+// Types ///////////////////////////////////////////////////////////////////////
+
 const requestActionTypes = key =>
   Object.fromEntries(
     ['', '_REQUEST', '_SUCCESS', '_ERROR', '_RESET'].map(suffix => {
@@ -19,10 +21,12 @@ export const TYPES = {
   USER_LIST_REMOVE: 'USER_LIST_REMOVE',
 };
 
+// Actions /////////////////////////////////////////////////////////////////////
+
 const requestAction = (key, actionFun) => (...args) => async dispatch => {
   dispatch({
     type: TYPES[`${key}_REQUEST`],
-    payload: null,
+    payload: [...args],
   });
   try {
     const payload = await actionFun(...args);
@@ -30,6 +34,7 @@ const requestAction = (key, actionFun) => (...args) => async dispatch => {
       type: TYPES[`${key}_SUCCESS`],
       payload,
     });
+    return payload;
   } catch (error) {
     dispatch({
       type: TYPES[`${key}_ERROR`],
