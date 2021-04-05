@@ -79,9 +79,7 @@ const PrincipalMovie = ({ movie, navigation }) => {
                 <Text style={styles.itemText}>Play</Text>
               </View>
               <Pressable
-                onPress={() =>
-                  navigation.navigate('Details', { ...movie, release_date: '' })
-                }
+                onPress={() => navigation.navigate('Details', { movie })}
               >
                 <View style={styles.iconLabel}>
                   <FontAwesomeIcon
