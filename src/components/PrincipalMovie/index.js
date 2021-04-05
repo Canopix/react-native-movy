@@ -13,10 +13,6 @@ import { TextStyles } from '@/theme';
 
 const PrincipalMovie = ({ movie }) => {
   const { colors } = useTheme();
-  console.group('movie');
-  console.log(movie);
-  console.groupEnd();
-
   return (
     <View style={styles.container}>
       <ImageBackground
