@@ -12,7 +12,7 @@ describe('TMDBConfigurationReducer', () => {
 
   it('should handle actions with type GET_API_CONFIG', () => {
     const action = {
-      type: TYPES.GET_API_CONFIG,
+      type: TYPES.GET_API_CONFIG_SUCCESS,
       payload: TMDB_CONFIGURATION,
     };
     expect(tmdbConfigurationReducer(INITIAL_STATE, action)).toEqual(
