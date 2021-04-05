@@ -34,7 +34,7 @@ export const nowPlayingSelector = state => {
 };
 
 export const popularSelector = state => {
-  return movieRecord(state, state.popular);
+  return state.popular.map(m => movieRecord(state, m));
 };
 
 export const searchQuerySelector = state => {
