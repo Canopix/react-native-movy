@@ -11,6 +11,7 @@ const client = axios.create({
 
 if (Config.DEBUG_REQUESTS) {
   client.interceptors.request.use(request => {
+    // eslint-disable-next-line no-console
     console.log({ request });
   });
 }

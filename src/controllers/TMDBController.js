@@ -17,6 +17,14 @@ const checkParamRegExp = (name, value, regexp) => {
 
 // See <https://developers.themoviedb.org/3>.
 export class TMDBController {
+  static async configuration() {
+    const params = {
+      api_key: Config.TMDB_API_KEY,
+    };
+    const response = await HttpClient.get('/configuration', { params });
+    return response;
+  }
+
   static async getNowPlaying(args) {
     const { page = 1, language = 'en-US' } = args || {};
     checkParamInteger('page', page);
