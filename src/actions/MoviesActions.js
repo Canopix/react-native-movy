@@ -74,12 +74,12 @@ export const searchMovies = requestAction(TYPES.SEARCH_MOVIES, async query => {
   };
 });
 
-export const addToUserList = movieId => ({
+export const addToUserList = movie => ({
   type: TYPES.USER_LIST_ADD,
-  payload: { movieId },
+  payload: movie,
 });
 
-export const deleteFromUserList = movieId => ({
+export const deleteFromUserList = movie => ({
   type: TYPES.USER_LIST_REMOVE,
-  payload: { movieId },
+  payload: movie,
 });
