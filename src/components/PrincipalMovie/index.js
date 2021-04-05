@@ -30,6 +30,16 @@ const PrincipalMovie = ({ movie }) => {
       }
     }
   };
+
+  const renderGenre = ({ name }, i) => (
+    <>
+      {i > 0 && (
+        <Text style={[TextStyles.label, { color: colors.text }]}>•</Text>
+      )}
+      <Text style={[TextStyles.label, { color: colors.text }]}>{name}</Text>
+    </>
+  );
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -41,19 +51,7 @@ const PrincipalMovie = ({ movie }) => {
           style={styles.linearGradient}
         >
           <View style={styles.subcontainer}>
-            <View style={styles.items}>
-              <Text style={[TextStyles.label, { color: colors.text }]}>
-                Kids
-              </Text>
-              <Text style={[TextStyles.label, { color: colors.text }]}>•</Text>
-              <Text style={[TextStyles.label, { color: colors.text }]}>
-                Fantasy Movie
-              </Text>
-              <Text style={[TextStyles.label, { color: colors.text }]}>•</Text>
-              <Text style={[TextStyles.label, { color: colors.text }]}>
-                Action
-              </Text>
-            </View>
+            <View style={styles.items}>{movie?.genres?.map(renderGenre)}</View>
             <View style={styles.movyLabel}>
               <Text style={styles.textLabel}>MOVY ORIGINAL</Text>
             </View>
