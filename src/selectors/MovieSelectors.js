@@ -34,12 +34,13 @@ export const nowPlayingSelector = state => {
 };
 
 export const popularSelector = state => {
-  return state.popular.map(m => movieRecord(state, m));
+  const { popular } = state;
+  return popular ? popular.map(m => movieRecord(state, m)) : null;
 };
 
 export const searchQuerySelector = state => {
   const { search } = state;
-  return search?.query;
+  return search ? search.query : null;
 };
 
 export const searchResultsSelector = state => {
