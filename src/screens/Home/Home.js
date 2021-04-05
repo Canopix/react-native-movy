@@ -11,6 +11,7 @@ import {
   getAPIConfiguration,
   getNowPlaying,
   getPopular,
+  getMovieDetails,
 } from '@/actions/MoviesActions';
 import MoviesList from '@/components/MoviesList';
 import PrincipalMovie from '@/components/PrincipalMovie';
@@ -24,8 +25,14 @@ export function Home() {
 
   useEffect(() => {
     dispatch(getAPIConfiguration());
-    dispatch(getNowPlaying());
-    dispatch(getPopular());
+    dispatch(getNowPlaying()).then(movies => {
+      dispatch(getMovieDetails(movies[0]?.id));
+    });
+    dispatch(getPopular()).then(async movies => {
+      for (const movie of movies) {
+        await dispatch(getMovieDetails(movie?.id));
+      }
+    });
   }, []);
 
   return (
