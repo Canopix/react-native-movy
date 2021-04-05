@@ -11,31 +11,17 @@ import {
 import { styles } from './styles';
 import { TextStyles } from '@/theme';
 
-const lastMovie = {
-  adult: false,
-  backdrop_path: '/iopYFB1b6Bh7FWZh3onQhph1sih.jpg',
-  genre_ids: [28, 878],
-  id: 399566,
-  original_language: 'en',
-  original_title: 'Godzilla vs. Kong',
-  overview:
-    'In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.',
-  popularity: 11701.435,
-  poster_path: '/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg',
-  release_date: '2021-03-24',
-  title: 'Godzilla vs. Kong',
-  video: false,
-  vote_average: 8.7,
-  vote_count: 1236,
-};
-
-const PrincipalMovie = () => {
+const PrincipalMovie = ({ movie }) => {
   const { colors } = useTheme();
+  console.group('movie');
+  console.log(movie);
+  console.groupEnd();
+
   return (
     <View style={styles.container}>
       <ImageBackground
         source={{
-          uri: `https://image.tmdb.org/t/p/original/${lastMovie.poster_path}`,
+          uri: movie?.poster_url,
         }}
         style={styles.backgroundImage}
       >
