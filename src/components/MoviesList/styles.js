@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   emptyView: {
-    height: 175,
+    height: 195,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
