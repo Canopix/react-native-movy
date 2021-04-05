@@ -16,9 +16,7 @@ const PrincipalMovie = ({ movie }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={{
-          uri: movie?.poster_url,
-        }}
+        source={{ uri: movie?.poster_url }}
         style={styles.backgroundImage}
       >
         <LinearGradient

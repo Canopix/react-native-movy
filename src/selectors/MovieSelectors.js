@@ -14,7 +14,8 @@ const movieRecord = (state, movie) => {
     return null;
   }
   const posterBaseURL =
-    state.tmdbConfiguration?.images?.base_url || 'https://image.tmdb.org/t/p/';
+    state.tmdbConfiguration?.images?.secure_base_url ||
+    'https://image.tmdb.org/t/p/';
   const posterSize = 'w500'; //TODO Check this value.
   const posterPath = movie.poster_path;
   return {
