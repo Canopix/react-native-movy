@@ -34,7 +34,8 @@ const movieRecord = (state, movie) => {
 // Selectors ///////////////////////////////////////////////////////////////////
 
 export const nowPlayingSelector = state => {
-  return movieRecord(state, state.nowPlaying);
+  const { nowPlaying } = state;
+  return nowPlaying ? nowPlaying.map(m => movieRecord(state, m)) : null;
 };
 
 export const popularSelector = state => {
