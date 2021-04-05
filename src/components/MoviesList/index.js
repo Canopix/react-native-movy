@@ -4,30 +4,38 @@ import { View, TouchableOpacity, ScrollView, Image, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { styles } from './styles';
 
-function MoviesList({ title, movies, navigation }) {
+function MoviesList({ title, movies, navigation, onEmpty }) {
+  const movieRenderer = movie => (
+    <TouchableOpacity
+      key={movie.id}
+      activeOpacity={0.6}
+      onPress={() => navigation.navigate('Profile', { movie })}
+    >
+      <Image
+        style={styles.image}
+        resizeMode="contain"
+        source={{ uri: movie.poster_url }}
+      />
+    </TouchableOpacity>
+  );
+  const emptyList = !movies || movies.length < 1;
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
-      <ScrollView
-        horizontal={true}
-        keyboardShouldPersistTaps="always"
-        showsHorizontalScrollIndicator="false"
-        contentContainerStyle={styles.scrollView}
-      >
-        {(movies || []).map(movie => (
-          <TouchableOpacity
-            key={movie.id}
-            activeOpacity={0.6}
-            onPress={() => navigation.navigate('Profile', { movie })}
-          >
-            <Image
-              style={styles.image}
-              resizeMode="contain"
-              source={{ uri: movie.poster_url }}
-            />
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      {emptyList ? (
+        <View style={styles.emptyView}>
+          <Text style={styles.emptyText}>{onEmpty}</Text>
+        </View>
+      ) : (
+        <ScrollView
+          horizontal={true}
+          keyboardShouldPersistTaps="always"
+          showsHorizontalScrollIndicator="false"
+          contentContainerStyle={styles.scrollView}
+        >
+          {movies.map(movieRenderer)}
+        </ScrollView>
+      )}
     </View>
   );
 }
@@ -36,6 +44,7 @@ MoviesList.propTypes = {
   title: PropTypes.string,
   movies: PropTypes.array,
   navigation: PropTypes.object,
+  onEmpty: PropTypes.string,
 };
 
 export default MoviesList;

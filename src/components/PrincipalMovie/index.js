@@ -1,18 +1,35 @@
 import React from 'react';
 import { useTheme } from '@react-navigation/native';
-import { Text, View, ImageBackground } from 'react-native';
+import { Text, View, ImageBackground, Pressable } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faInfoCircle,
   faPlayCircle,
   faPlus,
+  faMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import { styles } from './styles';
 import { TextStyles } from '@/theme';
+import { addToUserList, deleteFromUserList } from '@/actions/MoviesActions';
+import { userListSelector } from '@/selectors/MovieSelectors';
 
 const PrincipalMovie = ({ movie }) => {
   const { colors } = useTheme();
+  const dispatch = useDispatch();
+  const userList = useSelector(userListSelector);
+  const movieInList = userList.find(({ id }) => id === movie?.id);
+
+  const onPressMyList = () => {
+    if (movie) {
+      if (movieInList) {
+        dispatch(deleteFromUserList(movie));
+      } else {
+        dispatch(addToUserList(movie));
+      }
+    }
+  };
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -41,10 +58,16 @@ const PrincipalMovie = ({ movie }) => {
               <Text style={styles.textLabel}>MOVY ORIGINAL</Text>
             </View>
             <View style={styles.itemsContainer}>
-              <View style={styles.itemsSubContainer}>
-                <FontAwesomeIcon icon={faPlus} style={styles.icon} size={32} />
-                <Text style={styles.itemText}>My List</Text>
-              </View>
+              <Pressable onPress={onPressMyList}>
+                <View style={styles.itemsSubContainer}>
+                  <FontAwesomeIcon
+                    icon={movieInList ? faMinus : faPlus}
+                    style={styles.icon}
+                    size={32}
+                  />
+                  <Text style={styles.itemText}>My List</Text>
+                </View>
+              </Pressable>
               <View style={styles.iconLabel}>
                 <FontAwesomeIcon
                   icon={faPlayCircle}

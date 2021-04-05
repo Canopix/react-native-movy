@@ -16,5 +16,16 @@ export const styles = StyleSheet.create({
   },
   scrollView: {
     padding: 10,
-  }
+  },
+  emptyView: {
+    height: 195,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyText: {
+    textAlign: 'center',
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
