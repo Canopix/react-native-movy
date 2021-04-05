@@ -2,19 +2,30 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ScrollView } from 'react-native';
-import { nowPlayingSelector } from '@/selectors/MovieSelectors';
-import { getNowPlaying, getAPIConfiguration } from '@/actions/MoviesActions';
+import {
+  nowPlayingSelector,
+  popularSelector,
+  userListSelector,
+} from '@/selectors/MovieSelectors';
+import {
+  getAPIConfiguration,
+  getNowPlaying,
+  getPopular,
+} from '@/actions/MoviesActions';
 import MoviesList from '@/components/MoviesList';
 import PrincipalMovie from '@/components/PrincipalMovie';
-import { list } from '@/screens/Home/test-data';
+// import { list } from '@/screens/Home/test-data';
 
 export function Home() {
   const dispatch = useDispatch();
   const nowPlaying = useSelector(nowPlayingSelector);
+  const popular = useSelector(popularSelector);
+  const userList = useSelector(userListSelector);
 
   useEffect(() => {
     dispatch(getAPIConfiguration());
     dispatch(getNowPlaying());
+    dispatch(getPopular());
   }, []);
 
   return (
@@ -23,8 +34,8 @@ export function Home() {
       keyboardShouldPersistTaps="always"
     >
       <PrincipalMovie movie={nowPlaying} />
-      <MoviesList title="My List" movies={list} />
-      <MoviesList title="Trending Now" movies={list} />
+      <MoviesList title="My List" movies={userList} />
+      <MoviesList title="Trending Now" movies={popular} />
     </ScrollView>
   );
 }
