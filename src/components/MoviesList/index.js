@@ -8,7 +8,6 @@ function MoviesList({ title, movies, navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
-
       <ScrollView
         horizontal={true}
         keyboardShouldPersistTaps="always"
@@ -24,9 +23,7 @@ function MoviesList({ title, movies, navigation }) {
             <Image
               style={styles.image}
               resizeMode="contain"
-              source={{
-                uri: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
-              }}
+              source={{ uri: movie.poster_url }}
             />
           </TouchableOpacity>
         ))}
