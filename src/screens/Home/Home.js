@@ -34,8 +34,16 @@ export function Home() {
       keyboardShouldPersistTaps="always"
     >
       <PrincipalMovie movie={nowPlaying} />
-      <MoviesList title="My List" movies={userList} />
-      <MoviesList title="Trending Now" movies={popular} />
+      <MoviesList
+        title="My List"
+        movies={userList}
+        onEmpty="There are no movies on your list ... yet."
+      />
+      <MoviesList
+        title="Trending Now"
+        movies={popular}
+        onEmpty="Loading. Please wait."
+      />
     </ScrollView>
   );
 }
