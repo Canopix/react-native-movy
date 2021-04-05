@@ -1,7 +1,10 @@
 // Utilities ///////////////////////////////////////////////////////////////////
 
-const parseDate = dateString => {
-  const match = (dateString || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+const parseDate = date => {
+  if (date instanceof Date) {
+    return date;
+  }
+  const match = (date || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (!match) {
     return null;
   }
