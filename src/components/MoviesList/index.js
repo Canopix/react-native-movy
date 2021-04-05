@@ -15,7 +15,7 @@ function MoviesList({ title, movies, navigation }) {
         showsHorizontalScrollIndicator="false"
         contentContainerStyle={styles.scrollView}
       >
-        {movies.map(movie => (
+        {(movies || []).map(movie => (
           <TouchableOpacity
             key={movie.id}
             activeOpacity={0.6}
