@@ -17,7 +17,7 @@ import { userListSelector } from '@/selectors/MovieSelectors';
 
 const MAX_GENRES = 4;
 
-const PrincipalMovie = ({ movie }) => {
+const PrincipalMovie = ({ movie, navigation }) => {
   const { colors } = useTheme();
   const dispatch = useDispatch();
   const userList = useSelector(userListSelector);
@@ -78,14 +78,20 @@ const PrincipalMovie = ({ movie }) => {
                 />
                 <Text style={styles.itemText}>Play</Text>
               </View>
-              <View style={styles.iconLabel}>
-                <FontAwesomeIcon
-                  icon={faInfoCircle}
-                  style={styles.icon}
-                  size={32}
-                />
-                <Text style={styles.itemText}>Info</Text>
-              </View>
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Details', { ...movie, release_date: '' })
+                }
+              >
+                <View style={styles.iconLabel}>
+                  <FontAwesomeIcon
+                    icon={faInfoCircle}
+                    style={styles.icon}
+                    size={32}
+                  />
+                  <Text style={styles.itemText}>Info</Text>
+                </View>
+              </Pressable>
             </View>
           </View>
         </LinearGradient>
