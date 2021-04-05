@@ -29,27 +29,27 @@ const movieRecord = (state, movie) => {
 
 // Selectors ///////////////////////////////////////////////////////////////////
 
-export const getNowPlaying = state => {
+export const nowPlayingSelector = state => {
   return movieRecord(state, state.nowPlaying);
 };
 
-export const getPopular = state => {
+export const popularSelector = state => {
   return movieRecord(state, state.popular);
 };
 
-export const getSearchQuery = state => {
+export const searchQuerySelector = state => {
   const { search } = state;
   return search?.query;
 };
 
-export const getSearchResults = state => {
+export const searchResultsSelector = state => {
   const { search } = state;
   return search?.results
     ? search.results.map(m => movieRecord(state, m))
     : null;
 };
 
-export const getUserList = state => {
+export const userListSelector = state => {
   const { userList } = state;
   return userList ? userList.map(m => movieRecord(state, m)) : null;
 };

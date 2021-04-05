@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ScrollView } from 'react-native';
-import { getNowPlaying as nowPlayingSelector } from '@/selectors/MovieSelectors';
+import { nowPlayingSelector } from '@/selectors/MovieSelectors';
 import { getNowPlaying, getAPIConfiguration } from '@/actions/MoviesActions';
 import MoviesList from '@/components/MoviesList';
 import PrincipalMovie from '@/components/PrincipalMovie';
