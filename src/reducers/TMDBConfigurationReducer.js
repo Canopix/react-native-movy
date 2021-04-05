@@ -7,7 +7,7 @@ export const tmdbConfigurationReducer = (
   { payload, type }
 ) => {
   switch (type) {
-    case TYPES.GET_API_CONFIG:
+    case TYPES.GET_API_CONFIG_SUCCESS:
       return payload;
     default:
       return state;

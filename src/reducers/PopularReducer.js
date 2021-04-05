@@ -5,12 +5,12 @@ const INITIAL_STATE = null;
 
 export const popularReducer = (state = INITIAL_STATE, { payload, type }) => {
   switch (type) {
-    case TYPES.GET_POPULAR:
+    case TYPES.GET_POPULAR_SUCCESS:
       if (Array.isArray(payload)) {
         return movieData(payload?.[0]);
       }
       return movieData(payload);
-    case TYPES.GET_MOVIE_DETAILS:
+    case TYPES.GET_MOVIE_DETAILS_SUCCESS:
       if (payload?.id && state?.id === payload.id) {
         return { ...state, ...movieData(payload) };
       }
