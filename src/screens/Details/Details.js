@@ -28,10 +28,6 @@ export function Details({ route, navigation }) {
   const userList = useSelector(userListSelector);
   const movieInList = userList.find(({ id }) => id === movie?.id);
 
-  console.group('movie');
-  console.log(movie);
-  console.groupEnd();
-
   useEffect(() => {
     dispatch(getMovieDetails(movie.id));
   }, []);

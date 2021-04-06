@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { useTheme } from '@react-navigation/native';
 import { Text, View, ImageBackground, Pressable } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,8 +12,13 @@ import {
   faMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import { styles } from './styles';
+import Genres from '@/components/Genres';
 import { TextStyles } from '@/theme';
-import { addToUserList, deleteFromUserList } from '@/actions/MoviesActions';
+import {
+  addToUserList,
+  deleteFromUserList,
+  getMovieDetails,
+} from '@/actions/MoviesActions';
 import { userListSelector } from '@/selectors/MovieSelectors';
 
 const MAX_GENRES = 4;
@@ -22,7 +28,9 @@ const PrincipalMovie = ({ movie, navigation }) => {
   const dispatch = useDispatch();
   const userList = useSelector(userListSelector);
   const movieInList = userList.find(({ id }) => id === movie?.id);
-
+  useEffect(() => {
+    dispatch(getMovieDetails(movie.id));
+  }, []);
   const onPressMyList = () => {
     if (movie) {
       if (movieInList) {
@@ -53,9 +61,8 @@ const PrincipalMovie = ({ movie, navigation }) => {
           style={styles.linearGradient}
         >
           <View style={styles.subcontainer}>
-            <View style={styles.items}>
-              {(movie?.genres ?? []).slice(0, MAX_GENRES).map(renderGenre)}
-            </View>
+            <Genres genres={movie.genres} />
+
             <View style={styles.movyLabel}>
               <Text style={styles.textLabel}>MOVY ORIGINAL</Text>
             </View>
