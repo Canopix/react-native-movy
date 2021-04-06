@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import { useTheme } from '@react-navigation/native';
 import { Text, View, ImageBackground, Pressable } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
@@ -13,7 +12,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { styles } from './styles';
 import Genres from '@/components/Genres';
-import { TextStyles } from '@/theme';
 import {
   addToUserList,
   deleteFromUserList,
@@ -24,7 +22,6 @@ import { userListSelector } from '@/selectors/MovieSelectors';
 const MAX_GENRES = 4;
 
 const PrincipalMovie = ({ movie, navigation }) => {
-  const { colors } = useTheme();
   const dispatch = useDispatch();
   const userList = useSelector(userListSelector);
   const movieInList = userList.find(({ id }) => id === movie?.id);
