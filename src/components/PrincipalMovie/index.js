@@ -19,8 +19,6 @@ import {
 } from '@/actions/MoviesActions';
 import { userListSelector } from '@/selectors/MovieSelectors';
 
-const MAX_GENRES = 4;
-
 const PrincipalMovie = ({ movie, navigation }) => {
   const dispatch = useDispatch();
   const userList = useSelector(userListSelector);
@@ -37,15 +35,6 @@ const PrincipalMovie = ({ movie, navigation }) => {
       }
     }
   };
-
-  const renderGenre = ({ name }, i) => (
-    <>
-      {i > 0 && (
-        <Text style={[TextStyles.label, { color: colors.text }]}>•</Text>
-      )}
-      <Text style={[TextStyles.label, { color: colors.text }]}>{name}</Text>
-    </>
-  );
 
   return (
     <View style={styles.container}>
