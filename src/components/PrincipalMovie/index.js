@@ -24,8 +24,9 @@ const PrincipalMovie = ({ movie, navigation }) => {
   const userList = useSelector(userListSelector);
   const movieInList = userList.find(({ id }) => id === movie?.id);
   useEffect(() => {
-    dispatch(getMovieDetails(movie.id));
+    dispatch(getMovieDetails(movie?.id));
   }, []);
+
   const onPressMyList = () => {
     if (movie) {
       if (movieInList) {
@@ -47,7 +48,7 @@ const PrincipalMovie = ({ movie, navigation }) => {
           style={styles.linearGradient}
         >
           <View style={styles.subcontainer}>
-            <Genres genres={movie.genres} />
+            <Genres genres={movie?.genres} />
 
             <View style={styles.movyLabel}>
               <Text style={styles.textLabel}>MOVY ORIGINAL</Text>
