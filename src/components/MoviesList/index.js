@@ -9,7 +9,7 @@ function MoviesList({ title, movies, navigation, onEmpty }) {
     <TouchableOpacity
       key={movie.id}
       activeOpacity={0.6}
-      onPress={() => navigation.navigate('Profile', { movie })}
+      onPress={() => navigation.navigate('Details', { movie })}
     >
       <Image
         style={styles.image}

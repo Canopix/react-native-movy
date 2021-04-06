@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
   icon: {
     color: 'white',
     fontSize: 64,
+    marginRight: 10,
   },
   backgroundImage: {
     position: 'absolute',
@@ -35,8 +36,13 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-around',
-    width: '80%',
+    borderWidth: 2,
+    borderColor: 'white',
+    borderRadius: 10,
+    padding: 3,
+    backgroundColor: 'gray',
   },
   movyLabel: {
     display: 'flex',
@@ -75,4 +81,32 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  title: {
+    color: 'white',
+    fontSize: 32,
+    paddingRight: 10,
+    fontWeight: 'bold',
+    width: '60%',
+  },
+  overviewContainer: {
+    width: '100%',
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  overview: {
+    color: '#546f75',
+    fontSize: 16,
+    textAlign: 'justify',
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  backContainer: {
+    width: '100%',
+    position: 'absolute',
+    top: 60,
+    left: 40,
+  },
+  back: { color: 'white', fontWeight: 'bold', fontSize: 15 },
 });

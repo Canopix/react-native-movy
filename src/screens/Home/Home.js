@@ -15,7 +15,6 @@ import {
 } from '@/actions/MoviesActions';
 import MoviesList from '@/components/MoviesList';
 import PrincipalMovie from '@/components/PrincipalMovie';
-// import { list } from '@/screens/Home/test-data';
 
 export function Home({ navigation }) {
   const [nowPlayingIndex, setNowPlayingIndex] = useState(0);
@@ -59,11 +58,13 @@ export function Home({ navigation }) {
         title="My List"
         movies={userList}
         onEmpty="There are no movies on your list ... yet."
+        navigation={navigation}
       />
       <MoviesList
         title="Trending Now"
         movies={popular}
         onEmpty="Loading. Please wait."
+        navigation={navigation}
       />
     </ScrollView>
   );
