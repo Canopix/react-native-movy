@@ -15,9 +15,8 @@ import {
 } from '@/actions/MoviesActions';
 import MoviesList from '@/components/MoviesList';
 import PrincipalMovie from '@/components/PrincipalMovie';
-// import { list } from '@/screens/Home/test-data';
 
-export function Home() {
+export function Home({ navigation }) {
   const [nowPlayingIndex, setNowPlayingIndex] = useState(0);
   const dispatch = useDispatch();
   const nowPlaying = useSelector(nowPlayingSelector);
@@ -50,17 +49,22 @@ export function Home() {
       keyboardShouldPersistTaps="always"
     >
       <Pressable onPress={incNowPlayingIndex}>
-        <PrincipalMovie movie={nowPlaying?.[nowPlayingIndex]} />
+        <PrincipalMovie
+          movie={nowPlaying?.[nowPlayingIndex]}
+          navigation={navigation}
+        />
       </Pressable>
       <MoviesList
         title="My List"
         movies={userList}
         onEmpty="There are no movies on your list ... yet."
+        navigation={navigation}
       />
       <MoviesList
         title="Trending Now"
         movies={popular}
         onEmpty="Loading. Please wait."
+        navigation={navigation}
       />
     </ScrollView>
   );
